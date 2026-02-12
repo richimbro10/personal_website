@@ -129,7 +129,7 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
         >
-          <h1>Hi, I’m [Your Name]</h1>
+          <h1>Hi, I’m Rich Imbro</h1>
           <div className="typewriter">
             <TypeAnimation
               sequence={[
@@ -137,9 +137,7 @@ export default function App() {
                 1500,
                 "Full-Stack Developer.",
                 1500,
-                "Systems Thinker.",
-                1500,
-                "NYC Tech Energy.",
+                "Huge Yankee Fan.",
                 1500
               ]}
               speed={50}
@@ -154,14 +152,14 @@ export default function App() {
       <SectionCard
         icon={<FaGraduationCap className="icon" />}
         title="Binghamton University"
-        text="Built my foundation in computer science, systems design, and scalable architecture."
+        text="Graduated in 2023. Built my foundation in computer science, systems design, and scalable architecture."
         align="left"
       />
 
       <SectionCard
         icon={<FaBriefcase className="icon" />}
-        title="Software Engineer @ GEICO"
-        text="Designing and building production-grade systems that impact real users at scale."
+        title="Software Engineer @ Broadridge"
+        text="Designing and building production-grade systems in Platform Engineering."
         align="right"
         dark
       />

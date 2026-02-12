@@ -31,7 +31,7 @@ body {
 
 /* HERO */
 .hero {
-  min-height: 85vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -204,7 +204,7 @@ body {
 }
 
 .typewriter span {
-  border-right: 2px solid var(--brown);
+  /* border-right: 2px solid var(--brown); */
   padding-right: 5px;
 }
 
