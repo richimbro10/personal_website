@@ -13,6 +13,10 @@ import {
 import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Music from "./pages/Music";
+import Sports from "./pages/Sports";
+import Sidebar from "./components/Sidebar";
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -38,6 +42,7 @@ function SectionCard({ icon, title, text, align = "left", dark }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [page, setPage] = useState("home");
   const [showTop, setShowTop] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
@@ -55,133 +60,90 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* Scroll progress bar */}
       <motion.div className="progress-bar" style={{ width: progressWidth }} />
 
-      {/* Icons on load (absolute over hero) */}
-      {!showHeader && (
-        <>
-          <div className="absolute-icons-left">
-            <FaBars onClick={() => setMenuOpen(true)} />
-          </div>
-          <div className="absolute-icons-right">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
-              <FaInstagram />
-            </a>
-            <a href="https://x.com" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-              <FaLinkedin />
-            </a>
-          </div>
-        </>
-      )}
+      <Navbar
+        showHeader={showHeader}
+        onMenuToggle={() => setMenuOpen(true)}
+        page={page}
+        setPage={setPage}
+      />
 
-      {/* Sticky brown header after scroll */}
-      {showHeader && (
-        <motion.div
-          className="top-header"
-          initial={{ y: -80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="left">
-            <FaBars onClick={() => setMenuOpen(true)} />
-          </div>
-          <div className="right">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
-              <FaInstagram />
-            </a>
-            <a href="https://x.com" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-              <FaLinkedin />
-            </a>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Hamburger overlay */}
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
 
-      {/* Side menu */}
-      <motion.div
-        className="side-menu"
-        initial={{ x: -300 }}
-        animate={{ x: menuOpen ? 0 : -300 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h3>Navigation</h3>
-        <ul>
-          <li>Home</li>
-          <li>Projects</li>
-          <li>Blog</li>
-          <li>Contact</li>
-        </ul>
-      </motion.div>
-
-      {/* HERO */}
-      <section className="hero">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-        >
-          <h1>Hi, I’m Rich Imbro</h1>
-          <div className="typewriter">
-            <TypeAnimation
-              sequence={[
-                "Software Engineer.",
-                1500,
-                "Full-Stack Developer.",
-                1500,
-                "Huge Yankee Fan.",
-                1500
-              ]}
-              speed={50}
-              repeat={Infinity}
-              cursor={true}
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Sections */}
-      <SectionCard
-        icon={<FaGraduationCap className="icon" />}
-        title="Binghamton University"
-        text="Graduated in 2023. Built my foundation in computer science, systems design, and scalable architecture."
-        align="left"
+      <Sidebar
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        page={page}
+        setPage={setPage}
       />
 
-      <SectionCard
-        icon={<FaBriefcase className="icon" />}
-        title="Software Engineer @ Broadridge"
-        text="Designing and building production-grade systems in Platform Engineering."
-        align="right"
-        dark
-      />
+      {page === "home" ? (
+        <>
+          {/* HERO */}
+          <section className="hero">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+            >
+              <h1>Hi, I’m Rich Imbro</h1>
+              <div className="typewriter">
+                <TypeAnimation
+                  sequence={[
+                    "Software Engineer.",
+                    1500,
+                    "Full-Stack Developer.",
+                    1500,
+                    "Huge Yankee Fan.",
+                    1500,
+                  ]}
+                  speed={50}
+                  repeat={Infinity}
+                  cursor={true}
+                />
+              </div>
+            </motion.div>
+          </section>
 
-      <SectionCard
-        icon={<FaCode className="icon" />}
-        title="Full-Stack Engineer"
-        text="Python, JavaScript, Java, C, C++. From backend systems to modern responsive frontends."
-        align="left"
-      />
+          <SectionCard
+            icon={<FaGraduationCap className="icon" />}
+            title="Binghamton University"
+            text="Graduated in 2023. Built my foundation in computer science, systems design, and scalable architecture."
+            align="left"
+          />
 
-      <SectionCard
-        icon={<FaBaseballBall className="icon" />}
-        title="Beyond Code"
-        text="Huge Yankees fan. Love golfing, bowling, and spending quality time with friends."
-        align="right"
-        dark
-      />
+          <SectionCard
+            icon={<FaBriefcase className="icon" />}
+            title="Software Engineer @ Broadridge"
+            text="Designing and building production-grade systems in Platform Engineering."
+            align="right"
+            dark
+          />
 
-      {/* Social section at bottom */}
+          <SectionCard
+            icon={<FaCode className="icon" />}
+            title="Full-Stack Engineer"
+            text="Python, JavaScript, Java, C, C++. From backend systems to modern responsive frontends."
+            align="left"
+          />
+
+          <SectionCard
+            icon={<FaBaseballBall className="icon" />}
+            title="Beyond Code"
+            text="Huge Yankees fan. Love golfing, bowling, and spending quality time with friends. Also a huge passion for cooking and music."
+            align="right"
+            dark
+          />
+        </>
+      ) : page === "music" ? (
+        <Music />
+      ) : page === "sports" ? (
+        <Sports />
+      ) : null}
+
       <section className="social-section">
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+        <a href="https://www.linkedin.com/in/richardimbro?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noreferrer">
           <FaLinkedin className="icon" /> LinkedIn
         </a>
         <a href="https://twitter.com" target="_blank" rel="noreferrer">
@@ -189,7 +151,6 @@ export default function App() {
         </a>
       </section>
 
-      {/* Back to top */}
       {showTop && (
         <motion.div
           className="back-to-top"

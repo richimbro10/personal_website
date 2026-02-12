@@ -173,6 +173,48 @@ body {
   cursor: pointer;
 }
 
+/* Side menu nav items */
+.side-menu .side-inner h3 {
+  margin: 0 0 18px 0;
+  color: var(--eggshell);
+}
+
+.side-menu .nav-item {
+  margin: 8px 0;
+}
+
+.side-menu .nav-sublink,
+.side-menu .interests-toggle {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--eggshell);
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.side-menu .nav-sublink:hover,
+.side-menu .interests-toggle:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.side-menu .interests-list {
+  margin-top: 8px;
+  margin-left: 8px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.side-menu .nav-active {
+  background: var(--accent);
+  color: white;
+}
+
 /* Back to top — bottom LEFT */
 .back-to-top {
   position: fixed;
@@ -335,3 +377,253 @@ body {
     font-size: 1.5rem; /* smaller icons */
   }
 }
+
+/* Navbar / navigation links */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: var(--eggshell);
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.nav-link:hover,
+.nav-sublink:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.nav-active {
+  background: var(--accent);
+  color: white;
+}
+
+.interests {
+  position: relative;
+}
+
+.interests-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--eggshell);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 10px;
+}
+
+.interests-list {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  color: var(--brown);
+  border-radius: 8px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+  padding: 10px;
+  min-width: 160px;
+  z-index: 8000;
+}
+
+.nav-sublink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Smaller screens: collapse center links */
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+}
+
+/* Music page styles */
+.music-page {
+  padding: 80px 10%;
+  color: var(--brown);
+}
+
+.music-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.music-header h2 {
+  font-size: 2.6rem;
+  margin: 0 0 6px 0;
+}
+
+.music-header p {
+  margin: 0 0 28px 0;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.playlist-card {
+  display: block;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.playlist-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
+
+.artwork {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-emoji {
+  font-size: 48px;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
+}
+
+.playlist-info {
+  padding: 14px 16px 18px 16px;
+}
+
+.playlist-name {
+  font-weight: 700;
+  color: var(--brown);
+}
+
+.playlist-genre {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+@media (max-width: 1000px) {
+  .playlist-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .playlist-grid { grid-template-columns: 1fr; }
+  .artwork { height: 140px; }
+}
+
+/* Sports page styles */
+.sports-page {
+  padding: 80px 10%;
+  color: var(--brown);
+}
+
+.sports-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sports-header h2 {
+  font-size: 2.6rem;
+  margin: 0 0 6px 0;
+}
+
+.sports-header p {
+  margin: 0 0 28px 0;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.team-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border: 1px solid rgba(0,0,0,0.04);
+  cursor: default;
+}
+
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
+
+.team-artwork {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-emoji {
+  font-size: 56px;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
+}
+
+.team-info {
+  padding: 18px 16px 22px 16px;
+}
+
+.team-name {
+  font-weight: 700;
+  color: var(--brown);
+  font-size: 1.05rem;
+}
+
+.team-sport {
+  color: var(--accent);
+  font-size: 0.92rem;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .teams-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .teams-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .teams-grid { grid-template-columns: 1fr; }
+  .team-artwork { height: 160px; }
+  .team-emoji { font-size: 48px; }
+  .sports-page { padding: 60px 5%; }
+}
+
+
