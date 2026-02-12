@@ -301,3 +301,37 @@ body {
   font-size: 1.6rem;
   cursor: pointer;
 }
+
+/* Mobile responsiveness for cards */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 5%;
+  }
+
+  .card {
+    padding: 30px 20px; /* reduce padding */
+    max-width: 100%;
+  }
+
+  .card h2 {
+    font-size: 1.6rem; /* smaller title */
+  }
+
+  .card p {
+    font-size: 1rem; /* smaller paragraph */
+    line-height: 1.5;
+  }
+
+  .section-inner.left,
+  .section-inner.right {
+    justify-content: center; /* center cards on mobile */
+  }
+
+  .card-header {
+    gap: 15px;
+  }
+
+  .icon {
+    font-size: 1.5rem; /* smaller icons */
+  }
+}
