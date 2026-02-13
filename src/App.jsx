@@ -14,8 +14,8 @@ import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Music from "./pages/Music";
 import Sports from "./pages/Sports";
+import Cooking from "./pages/Cooking/Cooking";
 import Sidebar from "./components/Sidebar";
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
@@ -136,10 +136,10 @@ export default function App() {
             dark
           />
         </>
-      ) : page === "music" ? (
-        <Music />
       ) : page === "sports" ? (
         <Sports />
+      ) : page === "cooking" ? (
+        <Cooking />
       ) : null}
 
       <section className="social-section">
