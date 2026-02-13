@@ -13,12 +13,12 @@
   font-weight: 800;
   margin-bottom: 8px;
   letter-spacing: -1px;
-  color: #1a2233;
+  color: var(--brown);
   text-align: left;
 }
 .tvshows-intro {
   font-size: 1.15rem;
-  color: #3a4660;
+  color:  #6d4c2c;
   margin-bottom: 28px;
   opacity: 0.92;
 }
