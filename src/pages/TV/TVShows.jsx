@@ -1,6 +1,6 @@
 import { useState } from "react";
 import tvshows from "./tvshows";
-import "../Movies/TVShows.css";
+import "../TV/TVShows.css";
 
 export default function TVShows() {
   const [sortOrder, setSortOrder] = useState("desc");
