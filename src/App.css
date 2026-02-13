@@ -407,7 +407,7 @@ body {
 
 /* Side menu nav items */
 .side-menu .side-inner h3 {
-  margin: 0 0 18px 0;
+  margin: 5 0 18px 0;
   color: var(--eggshell);
 }
 
