@@ -64,13 +64,13 @@ const [search, setSearch] = useState("");
             key={recipe.title}
           >
             <div className="recipe-card-content">
-              <div className="recipe-card-header" style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 6 }}>
+              <div
+                className="recipe-card-header responsive-recipe-header"
+              >
                 <span className="recipe-rating">{recipe.rating.toFixed(1)}/10</span>
-                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h2 className="recipe-title" style={{ marginBottom: 2 }}>{recipe.title}</h2>
-                  <div className="recipe-subtitle" style={{ fontSize: '1.01rem', color: '#8a6a4f', marginTop: 0, marginBottom: 0, fontWeight: 400, opacity: 0.88 }}>
-                    {recipe.subtitle}
-                  </div>
+                <div className="recipe-title-subtitle">
+                  <h2 className="recipe-title">{recipe.title}</h2>
+                  <div className="recipe-subtitle">{recipe.subtitle}</div>
                 </div>
               </div>
               <div className="recipe-card-footer">

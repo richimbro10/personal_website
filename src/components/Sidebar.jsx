@@ -38,13 +38,13 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "music" ? "nav-active" : ""}`}
+            className={`nav-sublink ${page === "tv" ? "nav-active" : ""}`}
             onClick={() => {
-                setPage("music");
+                setPage("tv");
                 setMenuOpen(false);
             }}
             >
-            Music
+            TV Shows
             </button>
         </div>
 

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-
 /* Cooking Page Styles - Brown, Gold, Maroon Theme */
 .cooking-page {
   max-width: 800px;
@@ -89,6 +88,55 @@
   gap: 14px;
   margin-bottom: 6px;
 }
+
+.responsive-recipe-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.recipe-title-subtitle {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.recipe-title-subtitle .recipe-title {
+  margin-bottom: 2px;
+}
+
+.recipe-title-subtitle .recipe-subtitle {
+  font-size: 1.01rem;
+  color: #8a6a4f;
+  font-weight: 400;
+  opacity: 0.88;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .responsive-recipe-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .recipe-title-subtitle {
+    width: 100%;
+  }
+  .recipe-title-subtitle .recipe-title {
+    font-size: 1rem;
+    margin-bottom: 1px;
+  }
+  .recipe-title-subtitle .recipe-subtitle {
+    font-size: 0.97rem;
+    margin-bottom: 0;
+  }
+  .recipe-rating {
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
+}
+
 .recipe-rating {
   font-size: 1.1rem;
   font-weight: 700;
@@ -132,7 +180,7 @@
 @media (max-width: 600px) {
   .cooking-page {
     max-width: 98vw;
-    margin: 24px 0 0 0;
+    margin: 80px 0 0 0;
     padding: 18px 2vw 32px 2vw;
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(62,44,28,0.10);

@@ -14,9 +14,9 @@ import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Sports from "./pages/Sports";
 import Cooking from "./pages/Cooking/Cooking";
 import Sidebar from "./components/Sidebar";
+import TVShows from './pages/TV/TVShows.jsx';
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -136,8 +136,8 @@ export default function App() {
             dark
           />
         </>
-      ) : page === "sports" ? (
-        <Sports />
+      ) : page === "tv" ? (
+        <TVShows />
       ) : page === "cooking" ? (
         <Cooking />
       ) : null}
