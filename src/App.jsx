@@ -17,6 +17,7 @@ import Navbar from "./components/Navbar";
 import Cooking from "./pages/Cooking/Cooking";
 import Sidebar from "./components/Sidebar";
 import TVShows from './pages/TV/TVShows.jsx';
+import Quiz from './pages/Quiz/Quiz.jsx';
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -140,6 +141,8 @@ export default function App() {
         <TVShows />
       ) : page === "cooking" ? (
         <Cooking />
+      ) : page === "quiz" ? (
+        <Quiz />
       ) : null}
 
       <section className="social-section">

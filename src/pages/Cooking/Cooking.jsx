@@ -1,5 +1,6 @@
 import { useState } from "react";
 import recipes from "./recipes";
+import "./Cooking.css";
 import "../../App.css";
 
 export default function Cooking() {
