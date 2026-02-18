@@ -18,6 +18,7 @@ import Cooking from "./pages/Cooking/Cooking";
 import Sidebar from "./components/Sidebar";
 import TVShows from './pages/TV/TVShows.jsx';
 import Quiz from './pages/Quiz/Quiz.jsx';
+import Coding from './pages/Coding/Coding.jsx';
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -141,6 +142,8 @@ export default function App() {
         <TVShows />
       ) : page === "cooking" ? (
         <Cooking />
+      ) : page === "coding" ? (
+        <Coding />
       ) : page === "quiz" ? (
         <Quiz />
       ) : null}

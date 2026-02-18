@@ -58,7 +58,17 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
             Quiz
             </button>
         </div>
-
+        <div className="nav-item">
+            <button
+            className={`nav-sublink ${page === "coding" ? "nav-active" : ""}`}
+            onClick={() => {
+                setPage("coding");
+                setMenuOpen(false);
+            }}
+            >
+            Coding
+            </button>
+        </div>
         <div style={{ marginTop: 24 }}>
           <p style={{ opacity: 0.9 }}>More pages coming soon.</p>
         </div>
