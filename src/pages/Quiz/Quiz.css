@@ -393,23 +393,27 @@
   }
 
   .quiz-navigation {
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
   }
 
   .quiz-nav-btn {
-    width: 100%;
+    flex: 1;
+    min-width: 120px;
     font-size: 0.9rem;
   }
 
   .quiz-submit-btn {
-    width: 100%;
+    flex: 1;
+    min-width: 120px;
   }
 
   .quiz-status {
     width: 100%;
     text-align: center;
+    order: -1;
+    margin-bottom: 10px;
   }
 
   .result-score {
