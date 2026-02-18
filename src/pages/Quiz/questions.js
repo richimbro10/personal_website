@@ -18,7 +18,7 @@ const questions = [
   },
   {
     id: 3,
-    question: "Which country have I NOT been to??",
+    question: "Which country have I NOT been to?",
     choices: [
       "Puerto Rico",
       "Canada",
@@ -35,7 +35,7 @@ const questions = [
   },
   {
     id: 5,
-    question: "What is Rmy all-time favorite song? (title)",
+    question: "What is my all-time favorite song? (title)",
     type: "text",
     correct: "Fine By Me"
   },
@@ -48,7 +48,7 @@ const questions = [
       "Taekwondo",
       "Jiu Jitsu"
     ],
-    correct: 3
+    correct: 2
   },
   {
     id: 7,
@@ -69,11 +69,11 @@ const questions = [
     question: "What former Yankees reliever do I have autograph of?",
     choices: [
       "Aroldis Chapman",
-      "Delline Betances",
+      "Dellin Betances",
       "Chad Green",
       "David Robertson"
     ],
-    correct: 2
+    correct: 1
   }
 ];
 
