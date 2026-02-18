@@ -154,7 +154,7 @@ export default function Quiz() {
             Take this quiz to see if you know ball.
           </p>
           <div className="quiz-name-section">
-            <label htmlFor="userName">Your Name (Optional):</label>
+            <label htmlFor="userName">Your Name (Optional - but plz do):</label>
             <input
               id="userName"
               type="text"
