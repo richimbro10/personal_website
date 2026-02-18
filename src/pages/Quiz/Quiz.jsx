@@ -176,7 +176,7 @@ export default function Quiz() {
     <div className="quiz-page">
       <div className="quiz-container">
         <div className="quiz-header">
-          <h1 className="quiz-title">How Well Do You Know Rich?</h1>
+          <h1 className="quiz-title">How Well Do You Know Me?</h1>
           <div className="quiz-progress">
             <div className="progress-text">Question {currentQuestion + 1} of {questions.length}</div>
             <div className="progress-bar-container">
