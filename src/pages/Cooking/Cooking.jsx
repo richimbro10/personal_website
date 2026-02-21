@@ -16,6 +16,20 @@ const [search, setSearch] = useState("");
     sortOrder === "desc" ? b.rating - a.rating : a.rating - b.rating
   );
 
+  const getRatingColor = (rating) => {
+    const numericRating = parseFloat(rating);
+    let ratingColor = '#3a4660';  
+    if (!isNaN(numericRating)) {
+      if (numericRating > 9.5) ratingColor = '#17633a'; 
+      else if (numericRating > 8.5) ratingColor = '#219653';
+      else if (numericRating > 8) ratingColor = '#6fcf97'; 
+      else if (numericRating > 7) ratingColor = '#f2994a'; 
+      else if (numericRating > 6) ratingColor = '#d7263d'; 
+      else ratingColor = '#68111c';
+    }
+    return ratingColor;
+  }
+
   return (
     <div className="cooking-page">
       <h1 className="cooking-title">Cooking</h1>
@@ -68,7 +82,7 @@ const [search, setSearch] = useState("");
               <div
                 className="recipe-card-header responsive-recipe-header"
               >
-                <span className="recipe-rating">{recipe.rating.toFixed(1)}/10</span>
+                <span className="recipe-rating" style={{ backgroundColor: getRatingColor(recipe.rating) }}>{recipe.rating.toFixed(1)}/10</span>
                 <div className="recipe-title-subtitle">
                   <h2 className="recipe-title">{recipe.title}</h2>
                   <div className="recipe-subtitle">{recipe.subtitle}</div>

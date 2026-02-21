@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { FaBars, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/richardimbro?utm_source=share_via&utm_content=profile&utm_medium=member_ios";
+const TWITTER_URL = "https://x.com/richimbro?s=21&t=dLCSzhTOqXkZGdZGfREntA";
+const INSTAGRAM_URL = "https://www.instagram.com/richimbro?igsh=ZnpuOWFhanY0OG8x&utm_source=qr";
+
 export default function Navbar({ showHeader, onMenuToggle }) {
   return (
     <>
@@ -10,13 +14,13 @@ export default function Navbar({ showHeader, onMenuToggle }) {
             <FaBars onClick={onMenuToggle} />
           </div>
           <div className="absolute-icons-right">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
               <FaInstagram />
             </a>
-            <a href="https://x.com" target="_blank" rel="noreferrer">
+            <a href={TWITTER_URL} target="_blank" rel="noreferrer">
               <FaTwitter />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">
               <FaLinkedin />
             </a>
           </div>
@@ -33,13 +37,13 @@ export default function Navbar({ showHeader, onMenuToggle }) {
           </div>
 
           <div className="right">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
               <FaInstagram />
             </a>
-            <a href="https://x.com" target="_blank" rel="noreferrer">
+            <a href={TWITTER_URL} target="_blank" rel="noreferrer">
               <FaTwitter />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">
               <FaLinkedin />
             </a>
           </div>

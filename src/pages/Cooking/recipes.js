@@ -3,13 +3,13 @@ const recipes = [
     title: "Chili Garlic Chicken",
     subtitle: "Spicy & Savory Stir Fry, quick meal.",
     url: "https://www.jocooks.com/recipes/chili-garlic-chicken/",
-    rating: 9.1
+    rating: 9.6
   },
   {
     title: "Spicy Cajun Pasta",
     subtitle: "Heavy cream, cheese, and cajun spice.",
     url: "https://www.cookerru.com/creamy-cajun-chicken-pasta/",
-    rating: 9.0
+    rating: 9.3
   },
   {
     title: "Hot Honey Sliders",
@@ -33,7 +33,13 @@ const recipes = [
     title: "Lemon Linguine",
     subtitle: "Really quick meal for weeknight dinner.",
     url: "https://themodernproper.com/linguine-with-lemon-garlic-sauce",
-    rating: 7.0
+    rating: 7.8
+  },
+  {
+    title: "Honey Garlic Chicken & Green Beans",
+    subtitle: "Really easy meal again, rice cooker hits with a solid bed of rice.",
+    url: "https://www.eatyourselfskinny.com/honey-garlic-chicken-and-green-beans/",
+    rating: 8.1
   }
 ];
 
