@@ -1,0 +1,78 @@
+{
+  "countries": {
+    "Mexico": {
+      "lastVisited": "March 2024",
+      "blurb": "Been to mexico a few times, most recently for a cruise."
+    },
+    "Germany": {
+      "lastVisited": "September 2025",
+      "blurb": "Munich — Oktoberfest! 100% my favorite trip ever."
+    },
+    "Dominican Republic": {
+      "lastVisited": "June 2019",
+      "blurb": "Have a timeshare with Lifestyles Resort. Last time there was senior trip with my friends, and it was a movie (literally, thanks Ryan Costanza)."
+    },
+    "Puerto Rico": {
+      "lastVisited": "April 2019",
+      "blurb": "Explored Old San Juan and tropical rainforests for my senior year Spanish trip. Such a cool trip and a great way to end the year."
+    }
+  },
+  "states": {
+    "New York": {
+      "lastVisited": "Today",
+      "blurb": "My home!"
+    },
+    "New Jersey": {
+      "lastVisited": "Often",
+      "blurb": "Office and friends live here - probably will be back to Atlantic City soon too."
+    },
+    "Florida": {
+      "lastVisited": "April 2019",
+      "blurb": "Visited twice my senior year of High School - Delray Beach for varisty baseball and Disney for band trip."
+    },
+    "California": {
+      "lastVisited": "August 2014",
+      "blurb": "Family trip to Hollywood, Aneheim, and LA. Visited Disneyland too."
+    },
+    "Nevada": {
+      "lastVisited": "December 2014",
+      "blurb": "Vegas! Been 2 times, want to go back now that I'm older."
+    },
+    "Pennsylvania": {
+      "lastVisited": "December 2024",
+      "blurb": "Been to a ton of trips here - Hershey, snowboarding, etc. Last time here was to pick up my dog Bailey!"
+    },
+    "Massachusetts": {
+      "lastVisited": "March 2025",
+      "blurb": "St. Patrick's Day Parade! Will be going back again, sucks the Red Sox are there."
+    },
+    "Virginia": {
+      "lastVisited": "May 2018",
+      "blurb": "States Soccer tournament with Smithtown West, did not explore much."
+    },
+    "Tennessee": {
+      "lastVisited": "June 2022",
+      "blurb": "Nashville for memorial day weekend. Such a cool city, would love to go back."
+    },
+    "Arizona": {
+      "lastVisited": "April 2026",
+      "blurb": "Matt Contarino's bachelor party.. LFG."
+    },
+    "South Carolina": {
+      "lastVisited": "July 2024",
+      "blurb": "Visited Joe Scali down in SC.. golf courses were awesome. "
+    },
+    "Maryland": {
+      "lastVisited": "April 2015",
+      "blurb": "8th grade trip to Washington.. everyone's been there. "
+    },
+    "Delaware": {
+      "lastVisited": "April 2018",
+      "blurb": "Soccer tournament with Smithtown West."
+    },
+    "Illinois": {
+      "lastVisited": "June 2013",
+      "blurb": "Visited Chicago as a family trip. LOVED the city.. made me fall in love with living there in the future."
+    }
+  }
+}

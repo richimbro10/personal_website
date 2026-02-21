@@ -60,6 +60,17 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
         </div>
         <div className="nav-item">
             <button
+            className={`nav-sublink ${page === "travel" ? "nav-active" : ""}`}
+            onClick={() => {
+                setPage("travel");
+                setMenuOpen(false);
+            }}
+            >
+            Travel
+            </button>
+        </div>
+        <div className="nav-item">
+            <button
             className={`nav-sublink ${page === "coding" ? "nav-active" : ""}`}
             onClick={() => {
                 setPage("coding");

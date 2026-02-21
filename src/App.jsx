@@ -19,6 +19,7 @@ import Sidebar from "./components/Sidebar";
 import TVShows from './pages/TV/TVShows.jsx';
 import Quiz from './pages/Quiz/Quiz.jsx';
 import Coding from './pages/Coding/Coding.jsx';
+import TravelSection from './pages/Travel/Travel.jsx';
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -146,6 +147,8 @@ export default function App() {
         <Coding />
       ) : page === "quiz" ? (
         <Quiz />
+      ) : page === "travel" ? (
+        <TravelSection />
       ) : null}
 
       <section className="social-section">
