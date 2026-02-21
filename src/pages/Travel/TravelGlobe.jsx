@@ -50,11 +50,11 @@ const TravelGlobe = ({ setPopup }) => {
               : d.regionType === "country"
               ? placesRef.current.countries[d.properties.name]
               : null;
-
           if (data) {
             setPopup({
               title: d.properties.name,
-              content: `${data.blurb}\n\nLast visited: ${data.lastVisited}`
+              lastVisited: data.lastVisited,
+              content: `${data.blurb}`
             });
           } else {
             setPopup(null); // safe close

@@ -18,7 +18,6 @@ const TravelSection = () => {
       <div className="globe-wrapper">
         <TravelGlobe setPopup={setPopup} />
       </div>
-
       {popup && (
         <div className="popup-overlay">
           <div className="popup-card">
