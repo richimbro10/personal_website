@@ -98,8 +98,6 @@ export default function App() {
                     1500,
                     "Full-Stack Developer.",
                     1500,
-                    "Huge Yankee Fan.",
-                    1500,
                   ]}
                   speed={50}
                   repeat={Infinity}
@@ -127,7 +125,7 @@ export default function App() {
           <SectionCard
             icon={<FaCode className="icon" />}
             title="Full-Stack Engineer"
-            text="Python, JavaScript, Java, C, C++. From backend systems to modern responsive frontends."
+            text="Python, JavaScript, Java, Terraform, Groovy, C, C++. Full stack ranging from frontend, backend, CI/CD, database systems, and more."
             align="left"
           />
 

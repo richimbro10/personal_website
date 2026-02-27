@@ -40,6 +40,12 @@ const recipes = [
     subtitle: "Really easy meal again, rice cooker hits with a solid bed of rice.",
     url: "https://www.eatyourselfskinny.com/honey-garlic-chicken-and-green-beans/",
     rating: 8.1
+  },
+  {
+    title: "Lemon Chicken Picata",
+    subtitle: "CPretty difficult to perfect the lemon sauce, but I would attempt it again.",
+    url: "https://www.recipetineats.com/chicken-piccata/",
+    rating: 7.1,
   }
 ];
 
