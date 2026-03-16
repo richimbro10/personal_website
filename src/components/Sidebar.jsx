@@ -69,6 +69,17 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
             Travel
             </button>
         </div>
+         <div className="nav-item">
+            <button
+            className={`nav-sublink ${page === "athletes" ? "nav-active" : ""}`}
+            onClick={() => {
+                setPage("athletes");
+                setMenuOpen(false);
+            }}
+            >
+            NY Athletes
+            </button>
+        </div>
         <div className="nav-item">
             <button
             className={`nav-sublink ${page === "coding" ? "nav-active" : ""}`}

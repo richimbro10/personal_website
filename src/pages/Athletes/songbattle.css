@@ -1,0 +1,201 @@
+/* -------------------- */
+/* SONG BATTLE PAGE */
+/* -------------------- */
+
+.songbattle-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 20px 20px 20px; /* increased top padding to avoid overlap with header */
+  background: #f8f5f1;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(62,44,28,0.1);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Title */
+
+.songbattle-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #3e2c1c;
+}
+
+/* Battle Area */
+
+.battle-area {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Athlete Cards */
+
+.athlete-card {
+  flex: 1;
+  background: #fffdfa;
+  border: 1.5px solid #e9e1d6;
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.athlete-card:hover {
+  transform: translateY(-3px);
+  border-color: #8a1538;
+}
+
+/* Card text */
+
+.athlete-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3e2c1c;
+}
+
+.athlete-team {
+  font-size: 0.9rem;
+  color: #6d4c2c;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* Leaderboard */
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fffdfa;
+  border-radius: 8px;
+}
+
+.leaderboard-rank {
+  width: 30px;
+  font-weight: 700;
+  color: #8a1538;
+}
+
+.leaderboard-name {
+  flex: 1;
+  font-weight: 600;
+  color: #3e2c1c;
+}
+
+.leaderboard-team {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  text-align: right;
+}
+
+/* Ranking Progress */
+
+.ranking-progress {
+  margin-bottom: 22px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #6d4c2c;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e9e1d6;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #8a1538;
+  transition: width 0.3s ease;
+}
+
+/* Share buttons */
+
+.share-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.share-button {
+  flex: 1;
+  background: #8a1538;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.share-button:hover {
+  background: #6e0f2c;
+}
+
+/* -------------------- */
+/* MOBILE RESPONSIVE */
+/* -------------------- */
+
+@media (max-width: 700px) {
+
+  .songbattle-page {
+    padding: 80px 16px 20px 16px; /* more top padding for mobile */
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .songbattle-title {
+    font-size: 1.6rem;
+  }
+
+  .battle-area {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .athlete-card {
+    padding: 22px;
+    min-height: 100px;
+  }
+
+  .athlete-name {
+    font-size: 1.1rem;
+  }
+
+  .leaderboard-list {
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  .share-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .share-button {
+    width: 100%;
+  }
+}

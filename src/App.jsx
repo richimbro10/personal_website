@@ -20,6 +20,7 @@ import TVShows from './pages/TV/TVShows.jsx';
 import Quiz from './pages/Quiz/Quiz.jsx';
 import Coding from './pages/Coding/Coding.jsx';
 import TravelSection from './pages/Travel/Travel.jsx';
+import AthleteRankings from "./pages/Athletes/AthletesRanking.jsx";
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -145,8 +146,8 @@ export default function App() {
         <Coding />
       ) : page === "quiz" ? (
         <Quiz />
-      ) : page === "travel" ? (
-        <TravelSection />
+      ) : page === "travel" ? (  <TravelSection />) : 
+      page === "athletes" ? ( <AthleteRankings />
       ) : null}
 
       <section className="social-section">
