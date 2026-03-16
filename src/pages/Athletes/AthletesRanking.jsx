@@ -66,15 +66,7 @@ export default function SongBattleApp() {
 
   function generateShareText(results) {
     const top = results.slice(0, 10);
-    const blocks = top
-      .map((_, i) => {
-        if (i < 3) return "🟩";
-        if (i < 6) return "🟨";
-        return "⬜";
-      })
-      .join("");
-
-    let text = `🏆 My GOAT Athlete Rankings
+    let text = `My NY Athlete Rankings
 
 ${blocks}
 
@@ -87,7 +79,7 @@ Top Athletes:
     text += `
 
 Rank yours here:
-https://yourwebsite.com`;
+https://richimbro.com`;
 
     return text;
   }
@@ -100,7 +92,6 @@ https://yourwebsite.com`;
     alert("Results copied! Paste into any app to share.");
   }
 
-  // Share via Web Share API or fallback to copy
   function shareResults() {
     if (!result) return;
 
