@@ -89,7 +89,6 @@ https://richimbro.com`;
     if (!result) return;
     const text = generateShareText(result);
     navigator.clipboard.writeText(text);
-    alert("Results copied! Paste into any app to share.");
   }
 
   function shareResults() {
