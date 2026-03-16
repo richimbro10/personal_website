@@ -2,6 +2,14 @@
 /* SONG BATTLE PAGE */
 /* -------------------- */
 
+.page-description {
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+  font-size: 1rem;
+  color: #6d4c2c;
+  text-align: center;
+}
+
 .songbattle-page {
   max-width: 720px;
   margin: 0 auto;
@@ -186,7 +194,7 @@
   }
 
   .leaderboard-list {
-    max-height: 320px;
+    max-height: 400px;
     overflow-y: auto;
   }
 

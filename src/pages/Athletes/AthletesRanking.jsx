@@ -3,7 +3,7 @@ import { athletes } from "./Athletes";
 import AthleteCard from "./AthleteCard";
 import "./songbattle.css";
 
-export default function AthleteRankings() {
+export default function SongBattleApp() {
   const [lists, setLists] = useState([]);
   const [left, setLeft] = useState([]);
   const [right, setRight] = useState([]);
@@ -12,16 +12,14 @@ export default function AthleteRankings() {
   const [comparisons, setComparisons] = useState(0);
 
   useEffect(() => {
-    const athletesWithIds = athletes.map(a => ({
+    const athletesWithIds = athletes.map((a) => ({
       ...a,
-      id: crypto.randomUUID()
+      id: crypto.randomUUID(),
     }));
-    // Start with each athlete in its own list (merge sort style)
-    const initialLists = athletesWithIds.map(a => [a]);
+    const initialLists = athletesWithIds.map((a) => [a]);
     setLists(initialLists);
   }, []);
 
-  // When lists change, pick left/right
   useEffect(() => {
     if (lists.length >= 2) {
       setLeft([...lists[0]]);
@@ -30,13 +28,11 @@ export default function AthleteRankings() {
     }
   }, [lists]);
 
-  // Total comparisons estimate
   const totalComparisons = Math.ceil(athletes.length * Math.log2(athletes.length));
   const progress = Math.min(100, Math.round((comparisons / totalComparisons) * 100));
 
-  // Handle user choosing one athlete
   function choose(athlete) {
-    setComparisons(c => c + 1);
+    setComparisons((c) => c + 1);
 
     const newMerged = [...merged, athlete];
 
@@ -46,14 +42,13 @@ export default function AthleteRankings() {
       setRight(right.slice(1));
     }
 
-    // When one side is exhausted, merge remainder
     const leftEmpty = athlete === left[0] ? left.slice(1).length === 0 : left.length === 0;
     const rightEmpty = athlete === right[0] ? right.slice(1).length === 0 : right.length === 0;
 
     if (leftEmpty || rightEmpty) {
       const remaining = [
         ...(athlete === left[0] ? left.slice(1) : left),
-        ...(athlete === right[0] ? right.slice(1) : right)
+        ...(athlete === right[0] ? right.slice(1) : right),
       ];
       const completed = [...newMerged, ...remaining];
 
@@ -71,8 +66,15 @@ export default function AthleteRankings() {
 
   function generateShareText(results) {
     const top = results.slice(0, 10);
+    const blocks = top
+      .map((_, i) => {
+        if (i < 3) return "🟩";
+        if (i < 6) return "🟨";
+        return "⬜";
+      })
+      .join("");
 
-    let text = `🏆 My Best NY Athlete Rankings
+    let text = `🏆 My GOAT Athlete Rankings
 
 ${blocks}
 
@@ -85,24 +87,47 @@ Top Athletes:
     text += `
 
 Rank yours here:
-https://richimbro.com`;
+https://yourwebsite.com`;
 
     return text;
   }
 
-  function textResults() {
+  // Copy results to clipboard
+  function copyResults() {
     if (!result) return;
-    const number = "5164500551";
     const text = generateShareText(result);
-    const url = `sms:${number}?body=${encodeURIComponent(text)}`;
-    window.location.href = url;
+    navigator.clipboard.writeText(text);
+    alert("Results copied! Paste into any app to share.");
+  }
+
+  // Share via Web Share API or fallback to copy
+  function shareResults() {
+    if (!result) return;
+
+    const text = generateShareText(result);
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "My NY Athlete Rankings",
+          text: text,
+          url: "https://richimbro.com",
+        })
+        .catch(() => {
+          copyResults();
+        });
+    } else {
+      copyResults();
+    }
   }
 
   if (result) {
     return (
       <div className="songbattle-page">
-        <div className="songbattle-title">
-          Your Ranked Athletes
+        <div className="songbattle-title">Your Ranked NY Athletes</div>
+        <div className="page-description">
+          Congratulations! Here’s your personal ranking of the best NY athletes.
+          You can copy or share your results with Rich.
         </div>
 
         <div className="leaderboard-list">
@@ -116,19 +141,23 @@ https://richimbro.com`;
         </div>
 
         <div className="share-buttons">
-          <button className="share-button" onClick={textResults}>
-            Send Rich The Results
+          <button className="share-button" onClick={shareResults}>
+            Share Results
           </button>
         </div>
       </div>
     );
   }
 
+  // Battle view
   if (!left.length || !right.length) return null;
 
   return (
     <div className="songbattle-page">
       <div className="songbattle-title">Which NY athlete is better?</div>
+      <div className="page-description">
+        Pick between two NY athletes to build your personal top ranking. Base it off of not "who is more athletic", but who is the better athlete in thier sport. Let me know any athletes I forgot!
+      </div>
 
       <div className="ranking-progress">
         <div className="progress-header">
