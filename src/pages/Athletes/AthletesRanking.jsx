@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { athletes } from "./athletes";
+import { athletes } from "./Athletes";
 import AthleteCard from "./AthleteCard";
 import "./songbattle.css";
 
