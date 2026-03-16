@@ -68,8 +68,6 @@ export default function SongBattleApp() {
     const top = results.slice(0, 10);
     let text = `My NY Athlete Rankings
 
-${blocks}
-
 Top Athletes:
 `;
     top.forEach((athlete, i) => {

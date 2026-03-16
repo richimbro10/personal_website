@@ -5,7 +5,7 @@ export const athletes = [
   { name: "Jalen Brunson", team: "New York Knicks" },
   { name: "Karl Anthony Towns", team: "New York Knicks" },
   { name: "Cody Bellinger", team: "New York Yankees" },
-  { name: "Francisco Lindor", team: "Frank Ocean" },
+  { name: "Francisco Lindor", team: "New York Mets" },
   { name: "Malik Nabers", team: "New York Giants" },
   { name: "Garret Wilson", team: "New York Jets" },
   { name: "Jaxon Dart", team: "New York Giants" },
