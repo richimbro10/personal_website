@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FaChevronDown, FaImage } from "react-icons/fa";
 
 export default function Sidebar({ menuOpen, setMenuOpen }) {
   const [interestsOpen, setInterestsOpen] = useState(false);
+  const [photosOpen, setPhotosOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -79,6 +81,45 @@ export default function Sidebar({ menuOpen, setMenuOpen }) {
             >
             Coding
             </button>
+        </div>
+        <div className="nav-item">
+            <button
+            className="interests-toggle"
+            onClick={() => setPhotosOpen(!photosOpen)}
+            >
+              <span className="toggle-label">
+                Photos
+              </span>
+              <motion.div
+                animate={{ rotate: photosOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="chevron-icon"
+              >
+                <FaChevronDown />
+              </motion.div>
+            </button>
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{
+                opacity: photosOpen ? 1 : 0,
+                height: photosOpen ? "auto" : 0
+              }}
+              transition={{ duration: 0.3 }}
+              className="submenu"
+            >
+              <button
+                className={`nav-sublink submenu-item ${isActive("/photos") ? "nav-active" : ""}`}
+                onClick={() => handleNavigate("/photos")}
+              >
+                Collage
+              </button>
+              <button
+                className={`nav-sublink submenu-item ${isActive("/photos/upload") ? "nav-active" : ""}`}
+                onClick={() => handleNavigate("/photos/upload")}
+              >
+                Upload
+              </button>
+            </motion.div>
         </div>
         <div style={{ marginTop: 24 }}>
           <p style={{ opacity: 0.9 }}>More pages coming soon.</p>

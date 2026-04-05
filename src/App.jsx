@@ -22,6 +22,8 @@ import Quiz from './pages/Quiz/Quiz.jsx';
 import Coding from './pages/Coding/Coding.jsx';
 import TravelSection from './pages/Travel/Travel.jsx';
 import AthletesApp from "./pages/Athletes/AthletesApp.jsx";
+import Collage from './pages/Photos/Collage.jsx';
+import Upload from './pages/Photos/Upload.jsx';
 import { Analytics } from "@vercel/analytics/react"
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
@@ -148,6 +150,8 @@ function AppContent() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/travel" element={<TravelSection />} />
         <Route path="/athletes" element={<AthletesApp />} />
+        <Route path="/photos" element={<Collage />} />
+        <Route path="/photos/upload" element={<Upload />} />
       </Routes>
 
       <section className="social-section">
