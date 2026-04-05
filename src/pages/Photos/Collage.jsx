@@ -101,6 +101,7 @@ export default function Collage() {
     <div className="photos-page">
       <div className="photos-container">
         <h1 className="photos-title">Photo Collage</h1>
+        <p className="photos-subtitle">These are some of my favorite pictures with all of you guys.</p>
 
         {photos.length > 0 && (
           <div className="view-mode-toggle">
