@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Cooking from "./pages/Cooking/Cooking";
@@ -45,9 +46,68 @@ function SectionCard({ icon, title, text, align = "left", dark }) {
   );
 }
 
-export default function App() {
+function HomePage() {
+  return (
+    <>
+      {/* HERO */}
+      <section className="hero">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          <h1>Hi, I'm Rich Imbro</h1>
+          <div className="typewriter">
+            <TypeAnimation
+              sequence={[
+                "Software Engineer.",
+                1500,
+                "Full-Stack Developer.",
+                1500,
+              ]}
+              speed={50}
+              repeat={Infinity}
+              cursor={true}
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      <SectionCard
+        icon={<FaGraduationCap className="icon" />}
+        title="Binghamton University"
+        text="Graduated in 2023. Built my foundation in computer science, systems design, and scalable architecture."
+        align="left"
+      />
+
+      <SectionCard
+        icon={<FaBriefcase className="icon" />}
+        title="Software Engineer @ Broadridge"
+        text="Designing and building production-grade systems in Platform Engineering."
+        align="right"
+        dark
+      />
+
+      <SectionCard
+        icon={<FaCode className="icon" />}
+        title="Full-Stack Engineer"
+        text="Python, JavaScript, Java, Terraform, Groovy, C, C++. Full stack ranging from frontend, backend, CI/CD, database systems, and more."
+        align="left"
+      />
+
+      <SectionCard
+        icon={<FaBaseballBall className="icon" />}
+        title="Beyond Code"
+        text="Huge Yankees fan. Love golfing, bowling, and spending quality time with friends. Also a huge passion for cooking and music."
+        align="right"
+        dark
+      />
+    </>
+  );
+}
+
+function AppContent() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [page, setPage] = useState("home");
   const [showTop, setShowTop] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
 
@@ -71,8 +131,6 @@ export default function App() {
       <Navbar
         showHeader={showHeader}
         onMenuToggle={() => setMenuOpen(true)}
-        page={page}
-        setPage={setPage}
       />
 
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
@@ -80,77 +138,17 @@ export default function App() {
       <Sidebar
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
-        page={page}
-        setPage={setPage}
       />
 
-      {page === "home" ? (
-        <>
-          {/* HERO */}
-          <section className="hero">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2 }}
-            >
-              <h1>Hi, I’m Rich Imbro</h1>
-              <div className="typewriter">
-                <TypeAnimation
-                  sequence={[
-                    "Software Engineer.",
-                    1500,
-                    "Full-Stack Developer.",
-                    1500,
-                  ]}
-                  speed={50}
-                  repeat={Infinity}
-                  cursor={true}
-                />
-              </div>
-            </motion.div>
-          </section>
-
-          <SectionCard
-            icon={<FaGraduationCap className="icon" />}
-            title="Binghamton University"
-            text="Graduated in 2023. Built my foundation in computer science, systems design, and scalable architecture."
-            align="left"
-          />
-
-          <SectionCard
-            icon={<FaBriefcase className="icon" />}
-            title="Software Engineer @ Broadridge"
-            text="Designing and building production-grade systems in Platform Engineering."
-            align="right"
-            dark
-          />
-
-          <SectionCard
-            icon={<FaCode className="icon" />}
-            title="Full-Stack Engineer"
-            text="Python, JavaScript, Java, Terraform, Groovy, C, C++. Full stack ranging from frontend, backend, CI/CD, database systems, and more."
-            align="left"
-          />
-
-          <SectionCard
-            icon={<FaBaseballBall className="icon" />}
-            title="Beyond Code"
-            text="Huge Yankees fan. Love golfing, bowling, and spending quality time with friends. Also a huge passion for cooking and music."
-            align="right"
-            dark
-          />
-        </>
-      ) : page === "tv" ? (
-        <TVShows />
-      ) : page === "cooking" ? (
-        <Cooking />
-      ) : page === "coding" ? (
-        <Coding />
-      ) : page === "quiz" ? (
-        <Quiz />
-      ) : page === "travel" ? (  <TravelSection />) : 
-      page === "athletes" ? ( <AthletesApp />
-      ) : null}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/tv" element={<TVShows />} />
+        <Route path="/cooking" element={<Cooking />} />
+        <Route path="/coding" element={<Coding />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/travel" element={<TravelSection />} />
+        <Route path="/athletes" element={<AthletesApp />} />
+      </Routes>
 
       <section className="social-section">
         <a href="https://www.linkedin.com/in/richardimbro?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noreferrer">
@@ -174,3 +172,12 @@ export default function App() {
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+

@@ -1,8 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
+export default function Sidebar({ menuOpen, setMenuOpen }) {
   const [interestsOpen, setInterestsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    setMenuOpen(false);
+  };
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <motion.div
@@ -16,77 +26,56 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
 
         <div className="nav-item">
           <button
-            className={`nav-sublink ${page === "home" ? "nav-active" : ""}`}
-            onClick={() => {
-              setPage("home");
-              setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/")}
           >
             Home
           </button>
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "cooking" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("cooking");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/cooking") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/cooking")}
             >
             Cooking
             </button>
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "tv" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("tv");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/tv") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/tv")}
             >
             TV Shows
             </button>
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "quiz" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("quiz");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/quiz") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/quiz")}
             >
             Quiz
             </button>
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "travel" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("travel");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/travel") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/travel")}
             >
             Travel
             </button>
         </div>
          <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "athletes" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("athletes");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/athletes") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/athletes")}
             >
             Athletes Ranking
             </button>
         </div>
         <div className="nav-item">
             <button
-            className={`nav-sublink ${page === "coding" ? "nav-active" : ""}`}
-            onClick={() => {
-                setPage("coding");
-                setMenuOpen(false);
-            }}
+            className={`nav-sublink ${isActive("/coding") ? "nav-active" : ""}`}
+            onClick={() => handleNavigate("/coding")}
             >
             Coding
             </button>
