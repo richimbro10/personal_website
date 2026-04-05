@@ -111,6 +111,12 @@ export default function Collage() {
             >
               <FaThLarge /> Grid
             </button>
+             <button
+              className={`mode-button ${viewMode === "compact-grid" ? "active" : ""}`}
+              onClick={() => setViewMode("compact-grid")}
+            >
+              <FaImage /> 4x4 Grid
+            </button>
             <button
               className={`mode-button ${viewMode === "carousel" ? "active" : ""}`}
               onClick={() => {
@@ -185,6 +191,31 @@ export default function Collage() {
                   <div className="carousel-counter">
                     {carouselIndex + 1} / {photos.length}
                   </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+              {viewMode === "compact-grid" && (
+                <motion.div
+                  className="photo-compact-grid"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {photos.map((photo, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="photo-item-compact clickable"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.05 }}
+                      onClick={() => openModal(photo)}
+                    >
+                      <img src={photo.url} alt={photo.name} />
+                    </motion.div>
+                  ))}
                 </motion.div>
               )}
             </AnimatePresence>
