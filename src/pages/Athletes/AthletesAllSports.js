@@ -7,7 +7,7 @@ export const allSportsAthletes = [
   // Basketball
   { name: "Nikola Jokic", team: "Denver Nuggets", sport: "Basketball" },
   { name: "Shai Gilgeous-Alexander", team: "Oklahoma City Thunder", sport: "Basketball" },
-  { name: "Luka Doncic", team: "Dallas Mavericks", sport: "Basketball" },
+  { name: "Luka Doncic", team: "Los Angeles Lakers", sport: "Basketball" },
   { name: "Giannis Antetokounmpo", team: "Milwaukee Bucks", sport: "Basketball" },
 
   // Football
