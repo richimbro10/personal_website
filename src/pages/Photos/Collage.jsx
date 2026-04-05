@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Dropbox } from "dropbox";
-import { FaThLarge, FaFilm, FaImage, FaDownload, FaTimes } from "react-icons/fa";
+import { FaThLarge, FaImage, FaDownload, FaTimes } from "react-icons/fa";
 import "./Photos.css";
 
 export default function Collage() {
@@ -100,8 +100,8 @@ export default function Collage() {
   return (
     <div className="photos-page">
       <div className="photos-container">
-        <h1 className="photos-title">Photo Collage</h1>
-        <p className="photos-subtitle">These are some of my favorite pictures with all of you guys.</p>
+        <h1 className="photos-title">My Photos</h1>
+        <p className="photos-subtitle">These are some of my favorite pictures with all of you guys. It also saves me $2.99 per month to upload pictures here instead of my camera roll.</p>
 
         {photos.length > 0 && (
           <div className="view-mode-toggle">
@@ -116,15 +116,6 @@ export default function Collage() {
               onClick={() => setViewMode("compact-grid")}
             >
               <FaImage /> 4x4 Grid
-            </button>
-            <button
-              className={`mode-button ${viewMode === "carousel" ? "active" : ""}`}
-              onClick={() => {
-                setViewMode("carousel");
-                setCarouselIndex(0);
-              }}
-            >
-              <FaFilm /> Carousel
             </button>
           </div>
         )}
@@ -156,41 +147,6 @@ export default function Collage() {
                       <img src={photo.url} alt={photo.name} />
                     </motion.div>
                   ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-              {viewMode === "carousel" && (
-                <motion.div
-                  className="carousel-container"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="carousel-wrapper">
-                    <button className="carousel-btn carousel-prev" onClick={prevPhoto} disabled={photos.length <= 1}>
-                      ‹
-                    </button>
-                    <motion.div
-                      className="carousel-image-container clickable"
-                      key={carouselIndex}
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -50 }}
-                      transition={{ duration: 0.4 }}
-                      onClick={() => openModal(photos[carouselIndex])}
-                    >
-                      <img src={photos[carouselIndex].url} alt={photos[carouselIndex].name} />
-                    </motion.div>
-                    <button className="carousel-btn carousel-next" onClick={nextPhoto} disabled={photos.length <= 1}>
-                      ›
-                    </button>
-                  </div>
-                  <div className="carousel-counter">
-                    {carouselIndex + 1} / {photos.length}
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

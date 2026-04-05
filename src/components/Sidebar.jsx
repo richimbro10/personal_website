@@ -108,7 +108,7 @@ export default function Sidebar({ menuOpen, setMenuOpen }) {
               className={`nav-sublink submenu-item ${isActive("/photos") ? "nav-active" : ""}`}
               onClick={() => handleNavigate("/photos")}
             >
-              Collage
+              My Photos
             </button>
             <button
               className={`nav-sublink submenu-item ${isActive("/photos/upload") ? "nav-active" : ""}`}
