@@ -42,8 +42,8 @@ const recipes = [
     rating: 8.1
   },
   {
-    title: "Lemon Chicken Picata",
-    subtitle: "CPretty difficult to perfect the lemon sauce, but I would attempt it again.",
+    title: "Lemon Chicken Piccata",
+    subtitle: "Pretty difficult to perfect the lemon sauce, but I would attempt it again.",
     url: "https://www.recipetineats.com/chicken-piccata/",
     rating: 7.1,
   }

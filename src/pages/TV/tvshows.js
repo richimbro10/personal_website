@@ -4,7 +4,7 @@ const tvshows = [
   { title: "Dark", subtitle: "10", rating: "Unreal amount of twists. The craziest show I have ever seen. If you are a thinker, this is perfection." },
   { title: "Mr. Robot", subtitle: "9.7", rating: "Honestly, gave me a new perspective on life. Such a beautiful show. INSANE plot twists." },
   { title: "Avatar The Last Airbender", subtitle: "9.6", rating: "PEAK. Connor Forte thank you for making me watch this again. APPA YIP YIP" },
-  { title: "Chernobyl", subtitle: "9.0", rating: "Very good miniseries, tfor sure. However, hard to put as the 2nd best show ever like IMDB has it as." },
+  { title: "Chernobyl", subtitle: "9.0", rating: "Very good miniseries, for sure. However, hard to put as the 2nd best show ever like IMDB has it as." },
   { title: "Severance", subtitle: "9.1", rating: "Thank you Anthony Pellegrino for giving me your AppleTV. Was the craziest concept I watched before I watched Dark." },
   { title: "The Boys", subtitle: "8.9", rating: "Not a superhero guy, so this was exactly what I needed to get into a superhero story. Homelander is cinema." },
   { title: "Invincible", subtitle: "8.7", rating: "Super good story, not a huge fan of comics, but really well done. " },

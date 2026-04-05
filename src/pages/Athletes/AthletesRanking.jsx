@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { athletes } from "./Athletes";
 import AthleteCard from "./AthleteCard";
 import "./songbattle.css";
 
-export default function SongBattleApp() {
+export default function AthletesRanking({ 
+  athletes, 
+  title = "Which athlete is better?",
+  description = "Pick between two athletes to build your personal ranking.",
+  resultTitle = "Your Ranked Athletes",
+  resultDescription = "Congratulations! Here's your personal ranking."
+}) {
   const [lists, setLists] = useState([]);
   const [left, setLeft] = useState([]);
   const [right, setRight] = useState([]);
@@ -66,18 +71,10 @@ export default function SongBattleApp() {
 
   function generateShareText(results) {
     const top = results.slice(0, 10);
-    let text = `My NY Athlete Rankings
-
-Top Athletes:
-`;
+    let text = `${resultTitle}\n\nTop Athletes:\n`;
     top.forEach((athlete, i) => {
       text += `${i + 1}. ${athlete.name} — ${athlete.team}\n`;
     });
-
-    text += `
-
-Rank yours here:
-https://richimbro.com`;
 
     return text;
   }
@@ -97,7 +94,7 @@ https://richimbro.com`;
     if (navigator.share) {
       navigator
         .share({
-          title: "My NY Athlete Rankings",
+          title: resultTitle,
           text: text,
           url: "https://richimbro.com",
         })
@@ -112,9 +109,9 @@ https://richimbro.com`;
   if (result) {
     return (
       <div className="songbattle-page">
-        <div className="songbattle-title">Your Ranked NY Athletes</div>
+        <div className="songbattle-title">{resultTitle}</div>
         <div className="page-description">
-          Congratulations! Here’s your personal ranking of the best NY athletes.
+          {resultDescription}
           You can copy or share your results with Rich.
         </div>
 
@@ -142,9 +139,9 @@ https://richimbro.com`;
 
   return (
     <div className="songbattle-page">
-      <div className="songbattle-title">Which NY athlete is better?</div>
+      <div className="songbattle-title">{title}</div>
       <div className="page-description">
-        Pick between two NY athletes to build your personal top ranking. Base it off of not "who is more athletic", but who is the better athlete in thier sport. Let me know any athletes I forgot!
+        {description}
       </div>
 
       <div className="ranking-progress">

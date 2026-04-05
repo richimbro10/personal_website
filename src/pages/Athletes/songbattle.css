@@ -164,6 +164,45 @@
 }
 
 /* -------------------- */
+/* ATHLETES APP - TABS */
+/* -------------------- */
+
+.athletes-app-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.athletes-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 100px auto 20px auto;
+  max-width: 720px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.athletes-tab {
+  flex: 1;
+  padding: 10px 16px;
+  background: #e9e1d6;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6d4c2c;
+  transition: all 0.2s ease;
+}
+
+.athletes-tab:hover {
+  background: #d9cfc0;
+}
+
+.athletes-tab.active {
+  background: #8a1538;
+  color: white;
+}
+
+/* -------------------- */
 /* MOBILE RESPONSIVE */
 /* -------------------- */
 
@@ -205,5 +244,13 @@
 
   .share-button {
     width: 100%;
+  }
+
+  .athletes-tabs {
+    flex-direction: column;
+  }
+
+  .athletes-tab {
+    border-radius: 8px;
   }
 }

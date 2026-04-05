@@ -43,7 +43,7 @@ const questions = [
     id: 6,
     question: "Rich is a black belt in what?",
     choices: [
-      "Mixed Martia Arts",
+      "Mixed Martial Arts",
       "Karate",
       "Taekwondo",
       "Jiu Jitsu"

@@ -20,7 +20,8 @@ import TVShows from './pages/TV/TVShows.jsx';
 import Quiz from './pages/Quiz/Quiz.jsx';
 import Coding from './pages/Coding/Coding.jsx';
 import TravelSection from './pages/Travel/Travel.jsx';
-import AthleteRankings from "./pages/Athletes/AthletesRanking.jsx";
+import AthletesApp from "./pages/Athletes/AthletesApp.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 function SectionCard({ icon, title, text, align = "left", dark }) {
   return (
@@ -64,6 +65,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <Analytics />
       <motion.div className="progress-bar" style={{ width: progressWidth }} />
 
       <Navbar
@@ -147,7 +149,7 @@ export default function App() {
       ) : page === "quiz" ? (
         <Quiz />
       ) : page === "travel" ? (  <TravelSection />) : 
-      page === "athletes" ? ( <AthleteRankings />
+      page === "athletes" ? ( <AthletesApp />
       ) : null}
 
       <section className="social-section">

@@ -77,7 +77,7 @@ export default function Sidebar({ menuOpen, setMenuOpen, page, setPage }) {
                 setMenuOpen(false);
             }}
             >
-            NY Athletes
+            Athletes Ranking
             </button>
         </div>
         <div className="nav-item">
