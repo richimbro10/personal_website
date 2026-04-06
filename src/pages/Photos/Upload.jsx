@@ -46,7 +46,7 @@ export default function Upload() {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("path", FOLDER_PATH);
-
+      console.log(file, FOLDER_PATH);
       const res = await fetch("/api/photos/upload", {
         method: "POST",
         body: formData,
@@ -54,6 +54,7 @@ export default function Upload() {
 
       if (!res.ok) {
         const errorData = await res.json();
+        console.log("Upload error response:", errorData);
         throw new Error(errorData.error || "Upload failed");
       }
 
