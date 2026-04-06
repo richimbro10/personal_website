@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Dropbox } from "dropbox";
 import { FaThLarge, FaImage, FaDownload, FaTimes } from "react-icons/fa";
+import dropboxService from "../../services/dropboxService";
 import "./Photos.css";
 
 export default function Collage() {
@@ -12,25 +12,17 @@ export default function Collage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const DROPBOX_ACCESS_TOKEN = import.meta.env.VITE_DROPBOX_TOKEN;
   const FOLDER_PATH = "";
-
-  const dbx = DROPBOX_ACCESS_TOKEN ? new Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN }) : null;
 
   useEffect(() => {
     fetchPhotos();
   }, []);
 
   const fetchPhotos = async () => {
-    if (!dbx) {
-      console.error("Dropbox not configured");
-      return;
-    }
-
     setLoadingPhotos(true);
     try {
-      const response = await dbx.filesListFolder({ path: FOLDER_PATH });
-      const imageFiles = response.result.entries.filter((file) =>
+      const response = await dropboxService.listFolder(FOLDER_PATH);
+      const imageFiles = response.files.filter((file) =>
         /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
       );
 
@@ -38,12 +30,12 @@ export default function Collage() {
       const photosWithLinks = await Promise.all(
         imageFiles.map(async (file) => {
           try {
-            const linkResponse = await dbx.filesGetTemporaryLink({
-              path: file.path_display,
-            });
+            const linkResponse = await dropboxService.getTemporaryLink(
+              file.path_display
+            );
             return {
               name: file.name,
-              url: linkResponse.result.link,
+              url: linkResponse.url,
             };
           } catch (err) {
             console.error("Error getting temp link for", file.name, err);
