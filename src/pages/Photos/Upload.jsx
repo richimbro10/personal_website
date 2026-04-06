@@ -15,6 +15,7 @@ export default function Upload() {
   // Password unlock
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
+    console.log(UPLOAD_PASSWORD)
     if (password === UPLOAD_PASSWORD) {
       setIsAuthenticated(true);
       setPassword("");
