@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       // Sanitize filename
       const sanitizedName = file.originalFilename.replace(/[^a-zA-Z0-9.-]/g, "_");
       const dropboxPath = `${folderPath}/${Date.now()}_${sanitizedName}`;
-
+      console.log(`Uploading ${file.originalFilename} to Dropbox at ${dropboxPath}`); // Debug log
       try {
         await dbx.filesUpload({
           path: dropboxPath,

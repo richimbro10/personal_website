@@ -46,7 +46,6 @@ export default function Upload() {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("path", FOLDER_PATH);
-      console.log(file, FOLDER_PATH);
       const res = await fetch("/api/photos/upload", {
         method: "POST",
         body: formData,
