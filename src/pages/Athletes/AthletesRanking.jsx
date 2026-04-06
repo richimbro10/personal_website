@@ -70,9 +70,8 @@ export default function AthletesRanking({
   }
 
   function generateShareText(results) {
-    const top = results.slice(0, 10);
     let text = `${resultTitle}\n\nTop Athletes:\n`;
-    top.forEach((athlete, i) => {
+    results.forEach((athlete, i) => {
       text += `${i + 1}. ${athlete.name} — ${athlete.team}\n`;
     });
 

@@ -9,13 +9,12 @@ export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState("");
 
-  const UPLOAD_PASSWORD = import.meta.env.UPLOAD_PASSWORD;
+  const UPLOAD_PASSWORD = import.meta.env.VITE_UPLOAD_PASSWORD;
   const FOLDER_PATH = "/photo_submissions"; // match your API folder
 
   // Password unlock
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
-    console.log(UPLOAD_PASSWORD)
     if (password === UPLOAD_PASSWORD) {
       setIsAuthenticated(true);
       setPassword("");
