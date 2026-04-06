@@ -12,7 +12,7 @@ export default function Photos() {
   const [photos, setPhotos] = useState([]);
   const [loadingPhotos, setLoadingPhotos] = useState(false);
 
-  const UPLOAD_PASSWORD = import.meta.env.VITE_UPLOAD_PASSWORD;
+  const UPLOAD_PASSWORD = import.meta.env.UPLOAD_PASSWORD;
   const FOLDER_PATH = "/photo_submissions";
 
   useEffect(() => {
