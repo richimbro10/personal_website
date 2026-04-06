@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Dropbox } from "dropbox";
 import "./Photos.css";
 
 export default function Photos() {
@@ -13,14 +12,9 @@ export default function Photos() {
   const [photos, setPhotos] = useState([]);
   const [loadingPhotos, setLoadingPhotos] = useState(false);
 
-  // Initialize Dropbox - YOU NEED TO ADD YOUR ACCESS TOKEN HERE
-  const DROPBOX_ACCESS_TOKEN = import.meta.env.VITE_DROPBOX_TOKEN;
   const UPLOAD_PASSWORD = import.meta.env.VITE_UPLOAD_PASSWORD;
   const FOLDER_PATH = "/photo_submissions";
 
-  const dbx = DROPBOX_ACCESS_TOKEN ? new Dropbox({ auth: { accessToken: DROPBOX_ACCESS_TOKEN } }) : null;
-
-  // Fetch photos from Dropbox
   useEffect(() => {
     if (activeTab === "collage") {
       fetchPhotos();
@@ -28,49 +22,35 @@ export default function Photos() {
   }, [activeTab]);
 
   const fetchPhotos = async () => {
-    if (!dbx) {
-      setUploadMessage("Dropbox not configured. Add VITE_DROPBOX_TOKEN to .env");
-      return;
-    }
-
     setLoadingPhotos(true);
     try {
-      const response = await dbx.filesListFolder({ path: FOLDER_PATH });
-      const imageFiles = response.result.entries.filter((file) =>
-        /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
+      // 1. Get file list from your API
+      const res = await fetch(
+        `/api/photos/list?path=${encodeURIComponent(FOLDER_PATH)}`
       );
+      const data = await res.json();
 
-      // Get shared links for each image
+      // 2. Get temporary links for each file
       const photosWithLinks = await Promise.all(
-        imageFiles.map(async (file) => {
-          try {
-            const linkResponse = await dbx.sharingCreateSharedLink({
-              path: file.path_display,
-              settings: { requested_visibility: "public" },
-            });
-            return {
-              name: file.name,
-              url: linkResponse.result.url.replace("?dl=0", "?dl=1"),
-            };
-          } catch (err) {
-            // Link might already exist
-            try {
-              const existingLinks = await dbx.sharingListSharedLinks({
-                path: file.path_display,
-              });
-              if (existingLinks.result.links.length > 0) {
-                return {
-                  name: file.name,
-                  url: existingLinks.result.links[0].url.replace("?dl=0", "?dl=1"),
-                };
-              }
-            } catch {}
-            return null;
-          }
+        data.files.map(async (file) => {
+          const linkRes = await fetch("/api/photos/download-link", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ path: file.path_display }),
+          });
+
+          const linkData = await linkRes.json();
+
+          return {
+            name: file.name,
+            url: linkData.url,
+          };
         })
       );
 
-      setPhotos(photosWithLinks.filter((p) => p !== null));
+      setPhotos(photosWithLinks);
     } catch (err) {
       console.error("Error fetching photos:", err);
       setUploadMessage("Error loading photos");
@@ -103,36 +83,35 @@ export default function Photos() {
       return;
     }
 
-    if (!dbx) {
-      setUploadMessage("Dropbox not configured");
-      return;
-    }
-
     setUploading(true);
+
     try {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        try {
-          await dbx.filesUpload({
-            path: `${FOLDER_PATH}/${Date.now()}_${file.name}`,
-            contents: event.target.result,
-            autorename: true,
-          });
-          setUploadMessage("✓ Photo uploaded successfully!");
-          setFile(null);
-          // Reset form
-          const formElement = document.querySelector(".upload-form");
-          if (formElement) formElement.reset();
-          setTimeout(() => setUploadMessage(""), 3000);
-        } catch (err) {
-          console.error("Upload error:", err);
-          setUploadMessage("Error uploading photo");
-        }
-      };
-      reader.readAsArrayBuffer(file);
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("path", FOLDER_PATH);
+
+      const res = await fetch("/api/photos/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error("Upload failed");
+      }
+
+      setUploadMessage("✓ Photo uploaded successfully!");
+      setFile(null);
+
+      const formElement = document.querySelector(".upload-form");
+      if (formElement) formElement.reset();
+
+      // Refresh collage after upload
+      fetchPhotos();
+
+      setTimeout(() => setUploadMessage(""), 3000);
     } catch (err) {
-      console.error("Error:", err);
-      setUploadMessage("Error preparing upload");
+      console.error("Upload error:", err);
+      setUploadMessage("Error uploading photo");
     } finally {
       setUploading(false);
     }
@@ -140,7 +119,6 @@ export default function Photos() {
 
   return (
     <div className="photos-container">
-      {/* TABS */}
       <div className="tabs">
         <button
           className={`tab ${activeTab === "collage" ? "active" : ""}`}
@@ -156,15 +134,14 @@ export default function Photos() {
         </button>
       </div>
 
-      {/* COLLAGE TAB */}
       {activeTab === "collage" && (
         <motion.div
           className="tab-content collage-tab"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
         >
           <h2>Photo Collage</h2>
+
           {loadingPhotos ? (
             <p className="loading">Loading photos...</p>
           ) : photos.length === 0 ? (
@@ -177,7 +154,7 @@ export default function Photos() {
                   className="photo-item"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.05 }}
                 >
                   <img src={photo.url} alt={photo.name} />
                 </motion.div>
@@ -187,13 +164,11 @@ export default function Photos() {
         </motion.div>
       )}
 
-      {/* SUBMISSION TAB */}
       {activeTab === "submission" && (
         <motion.div
           className="tab-content submission-tab"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
         >
           <h2>Submit Your Photo</h2>
 
@@ -222,15 +197,25 @@ export default function Photos() {
                   />
                   <label>{file ? file.name : "Choose a photo..."}</label>
                 </div>
+
                 <button type="submit" disabled={uploading || !file}>
                   {uploading ? "Uploading..." : "Upload Photo"}
                 </button>
               </form>
-              <button className="logout-btn" onClick={() => setIsAuthenticated(false)}>
+
+              <button
+                className="logout-btn"
+                onClick={() => setIsAuthenticated(false)}
+              >
                 Logout
               </button>
+
               {uploadMessage && (
-                <p className={uploadMessage.includes("✓") ? "success" : "error"}>
+                <p
+                  className={
+                    uploadMessage.includes("✓") ? "success" : "error"
+                  }
+                >
                   {uploadMessage}
                 </p>
               )}

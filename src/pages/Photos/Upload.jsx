@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Dropbox } from "dropbox";
 import "./Photos.css";
 
 export default function Upload() {
@@ -10,12 +9,10 @@ export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState("");
 
-  const DROPBOX_ACCESS_TOKEN = import.meta.env.VITE_DROPBOX_TOKEN;
   const UPLOAD_PASSWORD = import.meta.env.VITE_UPLOAD_PASSWORD;
-  const FOLDER_PATH = "";
+  const FOLDER_PATH = "/photo_submissions"; // match your API folder
 
-  const dbx = DROPBOX_ACCESS_TOKEN ? new Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN }) : null;
-
+  // Password unlock
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
     if (password === UPLOAD_PASSWORD) {
@@ -28,11 +25,13 @@ export default function Upload() {
     }
   };
 
+  // File input
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
     setUploadMessage("");
   };
 
+  // Upload via your API
   const handleUpload = async (e) => {
     e.preventDefault();
 
@@ -41,52 +40,33 @@ export default function Upload() {
       return;
     }
 
-    if (!dbx) {
-      setUploadMessage("Dropbox not configured");
-      return;
-    }
-
     setUploading(true);
+
     try {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        try {
-          // Sanitize filename
-          const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
-          const path = `/${sanitizedName}`;
-          
-          console.log("Attempting upload to:", path);
-          console.log("File size:", file.size);
-          
-          const result = await dbx.filesUpload({
-            path: path,
-            contents: event.target.result,
-            autorename: true,
-          });
-          
-          console.log("Upload successful:", result);
-          setUploadMessage("✓ Photo uploaded successfully!");
-          setFile(null);
-          const formElement = document.querySelector(".upload-form");
-          if (formElement) formElement.reset();
-          setTimeout(() => setUploadMessage(""), 3000);
-        } catch (err) {
-          console.error("Full error:", err);
-          console.error("Error details:", {
-            status: err.status,
-            message: err.message,
-            error: err.error,
-            errorSummary: err.error?.error_summary,
-            errorBody: err.error?.error
-          });
-          
-          setUploadMessage("Upload failed: Check console for details");
-        }
-      };
-      reader.readAsArrayBuffer(file);
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("path", FOLDER_PATH);
+
+      const res = await fetch("/api/photos/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Upload failed");
+      }
+
+      setUploadMessage("✓ Photo uploaded successfully!");
+      setFile(null);
+
+      const formElement = document.querySelector(".upload-form");
+      if (formElement) formElement.reset();
+
+      setTimeout(() => setUploadMessage(""), 3000);
     } catch (err) {
-      console.error("Error:", err);
-      setUploadMessage("Error preparing upload");
+      console.error("Upload error:", err);
+      setUploadMessage(err.message || "Error uploading photo");
     } finally {
       setUploading(false);
     }
@@ -139,11 +119,18 @@ export default function Upload() {
                 {uploading ? "Uploading..." : "Upload Photo"}
               </button>
             </form>
-            <button className="logout-btn" onClick={() => setIsAuthenticated(false)}>
+            <button
+              className="logout-btn"
+              onClick={() => setIsAuthenticated(false)}
+            >
               Logout
             </button>
             {uploadMessage && (
-              <p className={uploadMessage.includes("✓") ? "success-message" : "error-message"}>
+              <p
+                className={
+                  uploadMessage.includes("✓") ? "success-message" : "error-message"
+                }
+              >
                 {uploadMessage}
               </p>
             )}
