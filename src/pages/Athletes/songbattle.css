@@ -6,7 +6,7 @@
   max-width: 600px;
   margin: 0 auto 32px auto;
   font-size: 1rem;
-  color: #6d4c2c;
+  color: var(--brown-light);
   text-align: center;
 }
 
@@ -14,7 +14,7 @@
   max-width: 720px;
   margin: 0 auto;
   padding: 60px 20px 20px 20px; /* increased top padding to avoid overlap with header */
-  background: #f8f5f1;
+  background: var(--eggshell);
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(62,44,28,0.1);
   min-height: 100vh;
@@ -28,7 +28,7 @@
   font-weight: 800;
   margin-bottom: 24px;
   text-align: center;
-  color: #3e2c1c;
+  color: var(--brown);
 }
 
 /* Battle Area */
@@ -43,8 +43,8 @@
 
 .athlete-card {
   flex: 1;
-  background: #fffdfa;
-  border: 1.5px solid #e9e1d6;
+  background: white;
+  border: 1.5px solid var(--dark-panel);
   border-radius: 16px;
   padding: 28px;
   cursor: pointer;
@@ -58,7 +58,7 @@
 
 .athlete-card:hover {
   transform: translateY(-3px);
-  border-color: #8a1538;
+  border-color: var(--maroon);
 }
 
 /* Card text */
@@ -66,12 +66,12 @@
 .athlete-name {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #3e2c1c;
+  color: var(--brown);
 }
 
 .athlete-team {
   font-size: 0.9rem;
-  color: #6d4c2c;
+  color: var(--brown-light);
   opacity: 0.7;
   margin-top: 6px;
 }
@@ -89,20 +89,20 @@
   display: flex;
   align-items: center;
   padding: 12px 14px;
-  background: #fffdfa;
+  background: white;
   border-radius: 8px;
 }
 
 .leaderboard-rank {
   width: 30px;
   font-weight: 700;
-  color: #8a1538;
+  color: var(--maroon);
 }
 
 .leaderboard-name {
   flex: 1;
   font-weight: 600;
-  color: #3e2c1c;
+  color: var(--brown);
 }
 
 .leaderboard-team {
@@ -121,12 +121,12 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
-  color: #6d4c2c;
+  color: var(--brown-light);
 }
 
 .progress-bar {
   height: 8px;
-  background: #e9e1d6;
+  background: var(--dark-panel);
   border-radius: 6px;
   overflow: hidden;
   margin-top: 4px;
@@ -134,7 +134,7 @@
 
 .progress-fill {
   height: 100%;
-  background: #8a1538;
+  background: var(--maroon);
   transition: width 0.3s ease;
 }
 
@@ -148,7 +148,7 @@
 
 .share-button {
   flex: 1;
-  background: #8a1538;
+  background: var(--maroon);
   color: white;
   border: none;
   padding: 12px 18px;
@@ -184,12 +184,12 @@
 .athletes-tab {
   flex: 1;
   padding: 10px 16px;
-  background: #e9e1d6;
+  background: var(--dark-panel);
   border: none;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  color: #6d4c2c;
+  color: var(--brown-light);
   transition: all 0.2s ease;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .athletes-tab.active {
-  background: #8a1538;
+  background: var(--maroon);
   color: white;
 }
 

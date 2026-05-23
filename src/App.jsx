@@ -112,9 +112,18 @@ function AppContent() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'original';
+  });
 
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,6 +134,10 @@ function AppContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'original' ? 'aquad' : 'original'));
+  };
+
   return (
     <div className="app">
       <Analytics />
@@ -133,6 +146,8 @@ function AppContent() {
       <Navbar
         showHeader={showHeader}
         onMenuToggle={() => setMenuOpen(true)}
+        theme={theme}
+        onThemeToggle={toggleTheme}
       />
 
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}

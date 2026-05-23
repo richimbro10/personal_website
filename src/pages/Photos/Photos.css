@@ -7,6 +7,8 @@
   --maroon: #8a1538;
 }
 
+/* Remove the duplicate as it will be inherited from App.css */
+
 .photos-page {
   background: var(--eggshell);
   padding: 50px 5%;
@@ -160,7 +162,7 @@
 
 .password-form input {
   padding: 14px 16px;
-  background: #f9f7f3;
+  background: var(--eggshell);
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 6px;
   color: var(--brown);
@@ -220,7 +222,7 @@
 
 .file-input-wrapper label {
   padding: 40px 30px;
-  background: #f9f7f3;
+  background: var(--eggshell);
   border: 2px dashed rgba(62, 44, 28, 0.15);
   border-radius: 8px;
   text-align: center;
@@ -272,7 +274,7 @@
 }
 
 .logout-btn:hover {
-  background: #ddd5ca;
+  background: rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 

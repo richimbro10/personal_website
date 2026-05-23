@@ -9,6 +9,28 @@
   --maroon: #8a1538;
 }
 
+/* Original theme */
+:root[data-theme="original"] {
+  --eggshell: #f4efe8;
+  --brown: #3e2c1c;
+  --accent: #8a6a4f;
+  --dark-panel: #e9e1d6;
+  --gold: #f6c244;
+  --maroon: #8a1538;
+  --brown-light: #6d4c2c;
+}
+
+/* Aquad Profession theme - Blue and White Futuristic */
+:root[data-theme="aquad"] {
+  --eggshell: #f0f7ff;
+  --brown: #0a1929;
+  --accent: #00d9ff;
+  --dark-panel: #e3f2fd;
+  --gold: #00b8e6;
+  --maroon: #0066cc;
+  --brown-light: #1a3d52;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -342,6 +364,98 @@ body {
   cursor: pointer;
 }
 
+/* Theme Dropdown */
+.theme-dropdown {
+  position: relative;
+}
+
+.theme-toggle-btn {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: var(--eggshell);
+  font-size: 1rem;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.theme-toggle-btn:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.dropdown-chevron {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-dropdown-menu {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  min-width: 200px;
+  z-index: 9000;
+  animation: dropdownSlideDown 0.2s ease;
+}
+
+@keyframes dropdownSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.theme-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--brown);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.theme-option:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.theme-option.active {
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.theme-option svg {
+  font-size: 1.1rem;
+}
+
 /* Initial icons over hero */
 .absolute-icons-left {
   position: absolute;
@@ -350,6 +464,14 @@ body {
   z-index: 6000;
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+.absolute-icons-center {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6000;
 }
 
 .absolute-icons-right {
@@ -444,6 +566,24 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  gap: 16px;
+}
+
+.navbar .left {
+  flex: 0 0 auto;
+}
+
+.navbar .center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
   gap: 16px;
 }
 
