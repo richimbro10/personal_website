@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaBars, FaLinkedin, FaTwitter, FaInstagram, FaMoon, FaSun, FaChevronDown } from "react-icons/fa";
+import { FaBars, FaLinkedin, FaTwitter, FaInstagram, FaMoon, FaSun, FaChevronDown, FaCircle, FaFlask, FaHockeyPuck, FaFootballBall } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/richardimbro?utm_source=share_via&utm_content=profile&utm_medium=member_ios";
@@ -9,6 +9,10 @@ const INSTAGRAM_URL = "https://www.instagram.com/richimbro?igsh=ZnpuOWFhanY0OG8x
 const THEMES = [
   { id: 'original', name: 'Original (Coffee)', icon: FaMoon },
   { id: 'aquad', name: 'Aqua', icon: FaSun },
+  { id: 'dark', name: 'Dark Mode', icon: FaCircle },
+  { id: 'retro', name: 'Breaking Bad', icon: FaFlask },
+  { id: 'islanders', name: 'Islanders', icon: FaHockeyPuck },
+  { id: 'giants', name: 'Giants', icon: FaFootballBall },
 ];
 
 export default function Navbar({ showHeader, onMenuToggle, theme, onThemeToggle }) {
@@ -17,7 +21,7 @@ export default function Navbar({ showHeader, onMenuToggle, theme, onThemeToggle 
 
   const handleThemeSelect = (themeId) => {
     if (themeId !== theme) {
-      onThemeToggle();
+      onThemeToggle(themeId);
     }
     setDropdownOpen(false);
   };

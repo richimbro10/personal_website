@@ -31,6 +31,65 @@
   --brown-light: #1a3d52;
 }
 
+/* Dark Mode - Sleek and Modern */
+:root[data-theme="dark"] {
+  --eggshell: #1a1a1a;
+  --brown: #868686;
+  --accent: #ff6b6b;
+  --dark-panel: #2d2d2d;
+  --gold: #ffd700;
+  --maroon: #ff1414;
+  --brown-light: #b0b0b0;
+  --theme-gradient: linear-gradient(135deg, rgba(255, 107, 157, 0.15), rgba(255, 215, 0, 0.1));
+  --theme-gradient-hover: linear-gradient(135deg, rgba(255, 107, 157, 0.25), rgba(255, 215, 0, 0.15));
+}
+
+/* Breaking Bad theme - Yellow, Blue, and Risk */
+:root[data-theme="retro"] {
+  --eggshell: #fef9e7;
+  --brown: #1a472a;
+  --accent: #f4d03f;
+  --dark-panel: #f0e68c;
+  --gold: #0077be;
+  --maroon: #004d00;
+  --brown-light: #2d5a3d;
+  --theme-gradient: linear-gradient(135deg, rgba(244, 208, 63, 0.2), rgba(0, 119, 190, 0.2));
+  --theme-gradient-hover: linear-gradient(135deg, rgba(244, 208, 63, 0.3), rgba(0, 119, 190, 0.3));
+}
+
+/* Islanders Theme - Royal Blue, Orange, White */
+:root[data-theme="islanders"] {
+  --eggshell: #f8f9fa;
+  --brown: #003a96;
+  --accent: #ff6600;
+  --dark-panel: #e8f0ff;
+  --gold: #ff6600;
+  --maroon: #001f63;
+  --brown-light: #004db3;
+  --theme-gradient: linear-gradient(135deg, rgba(0, 58, 150, 0.15), rgba(255, 102, 0, 0.15));
+  --theme-gradient-hover: linear-gradient(135deg, rgba(0, 58, 150, 0.25), rgba(255, 102, 0, 0.25));
+}
+
+/* Giants Theme - Red, White, Blue */
+:root[data-theme="giants"] {
+  --eggshell: #fafafa;
+  --brown: #b22234;
+  --accent: #3c3b6b;
+  --dark-panel: #f5f5f5;
+  --gold: #0033a0;
+  --maroon: #8b1538;
+  --brown-light: #d32f2f;
+  --theme-gradient: linear-gradient(135deg, rgba(178, 34, 52, 0.15), rgba(0, 51, 160, 0.15));
+  --theme-gradient-hover: linear-gradient(135deg, rgba(178, 34, 52, 0.25), rgba(0, 51, 160, 0.25));
+}
+
+/* Default/Original gradients */
+:root[data-theme="original"],
+:root[data-theme="aquad"] {
+  --theme-gradient: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  --theme-gradient-hover: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -370,7 +429,7 @@ body {
 }
 
 .theme-toggle-btn {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  background: var(--theme-gradient);
   border: 1.5px solid rgba(255,255,255,0.2);
   color: var(--eggshell);
   font-size: 1rem;
@@ -387,8 +446,22 @@ body {
 }
 
 .theme-toggle-btn:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  background: var(--theme-gradient-hover);
   border-color: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Absolute nav theme button - Better visibility on light backgrounds */
+.absolute-icons-center .theme-toggle-btn {
+  background: rgba(62, 44, 28, 0.15);
+  border: 1.5px solid rgba(62, 44, 28, 0.3);
+  color: var(--brown);
+}
+
+.absolute-icons-center .theme-toggle-btn:hover {
+  background: rgba(62, 44, 28, 0.25);
+  border-color: rgba(62, 44, 28, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
@@ -412,6 +485,13 @@ body {
   min-width: 200px;
   z-index: 9000;
   animation: dropdownSlideDown 0.2s ease;
+}
+
+/* Better styling for dropdown from absolute nav */
+.absolute-icons-center .theme-dropdown-menu {
+  background: rgba(244, 239, 232, 0.98);
+  border: 1.5px solid rgba(62, 44, 28, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes dropdownSlideDown {

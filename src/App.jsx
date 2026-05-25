@@ -134,8 +134,12 @@ function AppContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'original' ? 'aquad' : 'original'));
+  const toggleTheme = (themeId) => {
+    if (themeId) {
+      setTheme(themeId);
+    } else {
+      setTheme((prevTheme) => (prevTheme === 'original' ? 'aquad' : 'original'));
+    }
   };
 
   return (
