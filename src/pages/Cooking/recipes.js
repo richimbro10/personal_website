@@ -19,7 +19,7 @@ const recipes = [
   },
   {
     title: "Date Night Pasta",
-    subtitle: "Quick dish!",
+    subtitle: "",
     url: "https://sarahsvegankitchen.com/recipes/date-night-pasta/",
     rating: 8.0
   },
@@ -46,7 +46,19 @@ const recipes = [
     subtitle: "Pretty difficult to perfect the lemon sauce, but I would attempt it again.",
     url: "https://www.recipetineats.com/chicken-piccata/",
     rating: 7.1,
-  }
+  },
+  {
+    title: "Buffalo Chicken Brown Rice Bowls",
+    subtitle: "Really good if you're trying to eat quick. I used rotisserie chicken once to be even quicker and it was also good.",
+    url: "https://cleananddelicious.com/buffalo-chicken-brown-rice-bowls/",
+    rating: 8.0
+  },
+  {
+    title: "Tomato Zucchini Pasta",
+    subtitle: "Not very flavorful at all. Gotta be real sometimes.",
+    url: "https://www.eatwell101.com/tomato-zucchini-pasta-recipe",
+    rating: 6.0
+  },
 ];
 
 export default recipes;
