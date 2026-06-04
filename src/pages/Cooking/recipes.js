@@ -18,7 +18,7 @@ const recipes = [
     rating: 8.6
   },
   {
-    title: "Date Night Pasta",
+    title: "I hate Matt Contarino Pasta",
     subtitle: "",
     url: "https://sarahsvegankitchen.com/recipes/date-night-pasta/",
     rating: 8.0
