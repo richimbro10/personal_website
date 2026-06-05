@@ -34,7 +34,7 @@ const [search, setSearch] = useState("");
     <div className="cooking-page">
       <h1 className="cooking-title">Cooking</h1>
       <p className="cooking-intro">
-        I love spending time in the kitchen, experimenting with new flavors and perfecting my favorite dishes. Here are some of my top recipes!
+        I hate matt contarino and here are some recipes.
       </p>
       <input
         type="text"
