@@ -1,0 +1,108 @@
+.chat-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  font-family: inherit;
+}
+
+.chat-toggle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg, var(--gold, #ffd166), #f0c55a 80%);
+  color: var(--brown, #3e2c1c);
+  box-shadow: 0 6px 18px rgba(62,44,28,0.12);
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.chat-widget.open .chat-toggle {
+  transform: rotate(0deg);
+}
+
+.chat-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(62,44,28,0.16);
+}
+
+.chat-icon { font-size: 20px; line-height: 1; }
+
+.chat-toggle .chat-icon { color: inherit; }
+
+.chat-panel {
+  width: 320px;
+  max-width: calc(100vw - 48px);
+  background: #fffdfa;
+  border: 1.5px solid #e9e1d6;
+  box-shadow: 0 8px 28px rgba(62,44,28,0.12);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  font-weight: 700;
+  color: #3e2c1c;
+  margin-bottom: 8px;
+}
+
+.chat-input,
+.chat-textarea {
+  border: 1.5px solid #e9e1d6;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.98rem;
+  color: #3e2c1c;
+  background: white;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.chat-textarea { resize: vertical; }
+
+.chat-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chat-send {
+  background: var(--gold, #ffd166);
+  color: var(--brown, #3e2c1c);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-cancel {
+  background: transparent;
+  border: none;
+  color: #6b4832;
+  cursor: pointer;
+}
+
+.chat-sent {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #17633a;
+}
+
+@media (max-width: 520px) {
+  .chat-widget {
+    right: 12px;
+    bottom: 12px;
+  }
+  .chat-panel { width: calc(100vw - 24px); }
+  .chat-toggle { width: 48px; height: 48px; }
+}

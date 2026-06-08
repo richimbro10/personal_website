@@ -17,6 +17,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Cooking from "./pages/Cooking/Cooking";
 import Sidebar from "./components/Sidebar";
+import ChatWidget from "./components/ChatWidget";
 import TVShows from './pages/TV/TVShows.jsx';
 import Quiz from './pages/Quiz/Quiz.jsx';
 import Coding from './pages/Coding/Coding.jsx';
@@ -192,6 +193,7 @@ function AppContent() {
           <FaArrowUp />
         </motion.div>
       )}
+      <ChatWidget />
     </div>
   );
 }

@@ -59,6 +59,12 @@ const recipes = [
     url: "https://www.eatwell101.com/tomato-zucchini-pasta-recipe",
     rating: 6.0
   },
+  {
+    title: "Creamy Chicken Orzo",
+    subtitle: "*_*",
+    url: "https://littlesunnykitchen.com/creamy-chicken-orzo/",
+    rating: 7.7
+  },
 ];
 
 export default recipes;
