@@ -65,6 +65,12 @@ const recipes = [
     url: "https://littlesunnykitchen.com/creamy-chicken-orzo/",
     rating: 7.7
   },
+  {
+    title: "Lo Mein Noodles",
+    subtitle: "",
+    url: "https://www.recipetineats.com/lo-mein-noodles/",
+    rating: 7.7
+  },
 ];
 
 export default recipes;
