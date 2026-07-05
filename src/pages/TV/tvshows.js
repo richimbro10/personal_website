@@ -15,7 +15,8 @@ const tvshows = [
   { title: "Squid Games", subtitle: "7.0", rating: "Stopped watching after first 2 seasons ngl." },
   { title: "Manifest", subtitle: "6.9", rating: "First few seasons were actually not bad, but the finale was the worst piece of content I have ever laid my eyes on. Shoutout Matt Lardi." },
   { title: "Pluribus", subtitle: "8.4", rating: "Very good first season, but I just need a little more. Trust in Vince Gilligan." },
-  { title: "GenV", subtitle: "8.6", rating: "At first, had no intention to watch it, but in the end, it was worth it. Really good spinoff." }
+  { title: "GenV", subtitle: "8.6", rating: "At first, had no intention to watch it, but in the end, it was worth it. Really good spinoff." },
+  { title: "Narcos", subtitle: "8.5", rating: "Pedro Pascal goat." }
 ];
 
 export default tvshows;
