@@ -71,13 +71,13 @@ const recipes = [
     url: "https://www.recipetineats.com/lo-mein-noodles/",
     rating: 7.6
   },
-   {
+  {
     title: "Grilled Honey Balsamic Chicken",
     subtitle: "",
     url: "https://therecipecritic.com/grilled-honey-balsamic-chicken/",
     rating: 8.3
   },
-   {
+  {
     title: "Grilled Pineapple Barbecue Chicken",
     subtitle: "GAS",
     url: "https://www.slenderkitchen.com/recipe/grilled-pineapple-barbecue-chicken",
