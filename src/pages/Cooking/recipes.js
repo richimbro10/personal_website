@@ -7,7 +7,7 @@ const recipes = [
   },
   {
     title: "Spicy Cajun Pasta",
-    subtitle: "Heavy cream, cheese, and cajun spice.",
+    subtitle: "gas.",
     url: "https://www.cookerru.com/creamy-cajun-chicken-pasta/",
     rating: 9.3
   },
